@@ -8,9 +8,75 @@
     <title>Document</title>
   </head>
   <body>
+    <template id="student-template">
+      <tr class="new-row">
+        <td class="prefect">☆</td>
+        <td class="inq">☆</td>
+        <td class="first-name">FIRST NAME</td>
+        <td class="middle-name">MIDDLE NAME</td>
+        <td class="last-name">LAST NAME</td>
+        <td class="house">HOUSE</td>
+      </tr>
+    </template>
+
+    <template id="pop">
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Harry Potter</h2>
+          </div>
+          <div id="detailed-info">
+            <img src="assets/abbott_h.png" alt="" />
+
+            <ul class="modal-body">
+              <li id="modal-first">First name: Harry</li>
+              <li id="modal-middle">Middle name: Abbot</li>
+              <li id="modal-nick">Nickname:</li>
+              <li id="modal-last">Last name: Potter</li>
+              <li id="modal-house">House:</li>
+              <li id="modal-inq">inquisitorial squad: Yes</li>
+              <li id="modal-prefect">Prefect: No</li>
+              <li id="modal-blood">Blood: Pure</li>
+              <li id="modal-status">Status: Expelled</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+
     <header></header>
 
-    <main></main>
+    <main>
+      <table id="list">
+        <thead>
+          <tr id="sorting">
+            <th data-action="sort" data-sort-direction="asc" data-sort="star">
+              Prefect
+            </th>
+            <th data-action="sort" data-sort-direction="asc" data-sort="name">
+              Inquisitorial
+            </th>
+            <th data-action="sort" data-sort-direction="asc" data-sort="type">
+              First name
+            </th>
+            <th data-action="sort" data-sort-direction="asc" data-sort="desc">
+              Middle name
+            </th>
+            <th data-action="sort" data-sort-direction="asc" data-sort="age">
+              Last Name
+            </th>
+            <th data-action="sort" data-sort-direction="asc" data-sort="age">
+              House
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- animal template will be copied and inserted here -->
+        </tbody>
+      </table>
+    </main>
 
     <footer></footer>
 
