@@ -7,9 +7,36 @@ fetch("https://petlatkea.dk/2021/hogwarts/students.json")
 
 function passFunction(students) {
   const allData = fetchData(students);
+  let house;
+  showData(allData);
 
-  allData.forEach((student) => {
-    console.log(student);
+  document.querySelector("#filter-gryph").addEventListener("click", () => {
+    house = "Gryffindor";
+    filterByHouse(house, allData);
+  });
+
+  document.querySelector("#filter-all").addEventListener("click", () => {
+    removeData();
+    showData(allData);
+  });
+}
+
+function filterByHouse(house, data) {
+  const houseData = [];
+  data.forEach((student) => {
+    if (student.house === house) {
+      houseData.push(student);
+    }
+  });
+
+  removeData();
+
+  showData(houseData);
+}
+
+function showData(students) {
+  students.forEach((student) => {
+    // console.log(student);
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");
     const btn = studentClone.querySelector(".new-row");
@@ -118,4 +145,11 @@ function checkNames(first, middle, last, nick) {
   }
 
   return { fullName, middleName, lastName, nickName };
+}
+
+function removeData() {
+  let parent = document.querySelector("tbody");
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }

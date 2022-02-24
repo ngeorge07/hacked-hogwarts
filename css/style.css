@@ -18,6 +18,10 @@ tbody {
   text-align: center;
 }
 
+tbody tr {
+  cursor: pointer;
+}
+
 #list tbody tr td {
   padding: 4px;
 }

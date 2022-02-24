@@ -23,6 +23,10 @@ button {
 
 tbody {
   text-align: center;
+
+  tr {
+    cursor: pointer;
+  }
 }
 
 #list tbody tr td {
