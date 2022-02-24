@@ -10,28 +10,27 @@ function passFunction(students) {
   let house;
   showData(allData);
 
-  document.querySelector("#filter-gryph").addEventListener("click", () => {
-    house = "Gryffindor";
-    filterByHouse(house, allData);
+  const filterDropDown = document.querySelector("#filter");
+  filterDropDown.addEventListener("change", () => {
+    const selectedFilter = filterDropDown.value;
+    if (filterDropDown.value === "all") {
+      removeData();
+      showData(allData);
+    } else filter(selectedFilter, allData);
   });
 
-  document.querySelector("#filter-all").addEventListener("click", () => {
+  function filter(condition, data) {
+    const houseData = [];
+    data.forEach((student) => {
+      if (student.house === condition) {
+        houseData.push(student);
+      }
+    });
+
     removeData();
-    showData(allData);
-  });
-}
 
-function filterByHouse(house, data) {
-  const houseData = [];
-  data.forEach((student) => {
-    if (student.house === house) {
-      houseData.push(student);
-    }
-  });
-
-  removeData();
-
-  showData(houseData);
+    showData(houseData);
+  }
 }
 
 function showData(students) {

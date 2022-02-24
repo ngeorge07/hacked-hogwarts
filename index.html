@@ -47,8 +47,15 @@
     </template>
 
     <header>
-      <button id="filter-gryph">Filter Gryffindor</button>
-      <button id="filter-all">No filter</button>
+      <label for="filter">Filter:</label>
+
+      <select name="hogwarts-filter" id="filter" autocomplete="off">
+        <option value="all">No filter</option>
+        <option value="Gryffindor">Gryffindor</option>
+        <option value="Ravenclaw">Ravenclaw</option>
+        <option value="Hufflepuff">Hufflepuff</option>
+        <option value="Slytherin">Slytherin</option>
+      </select>
     </header>
 
     <main>
