@@ -77,7 +77,10 @@ function passFunction(students) {
 
       modalHouse.textContent = `House: ${student.house}`;
       modalBlood.textContent = `Blood: ${student.blood}`;
-      modalImg.src = student.image;
+
+      if (student.image) {
+        modalImg.src = student.image;
+      }
 
       document.querySelector("tbody").appendChild(popClone);
     });

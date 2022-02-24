@@ -117,9 +117,12 @@ function fetchData(students) {
     house = house.charAt(0).toUpperCase() + house.slice(1);
 
     function getImage(firstName, lastName) {
-      return `assets/${lastName
-        .substring(lastName.lastIndexOf(""), lastName.indexOf("-") + 1)
-        .toLowerCase()}_${firstName.substring(0, 1).toLowerCase()}.png`;
+      if (lastName === "Patil") {
+        return `assets/${lastName.toLowerCase()}_${firstName.toLowerCase()}.png`;
+      } else
+        return `assets/${lastName
+          .substring(lastName.lastIndexOf(""), lastName.indexOf("-") + 1)
+          .toLowerCase()}_${firstName.substring(0, 1).toLowerCase()}.png`;
     }
 
     newStudent.first_name = firstName;
