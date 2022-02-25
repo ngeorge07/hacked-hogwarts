@@ -74,19 +74,43 @@ function filter(condition, data) {
 
   return filteredData;
 }
-
+let nrOfPrefects = 0;
 function showData(students) {
   removeData();
   students.forEach((student) => {
     // console.log(student);
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");
-    const btn = studentClone.querySelector(".new-row");
+    const btn = studentClone.querySelector(".first-name");
 
     const firstName = studentClone.querySelector(".first-name");
     const middleName = studentClone.querySelector(".middle-name");
     const lastName = studentClone.querySelector(".last-name");
     const house = studentClone.querySelector(".house");
+
+    if (student.squad) {
+      studentClone.querySelector(".umbridge").classList.remove("dolores-gray");
+    } else
+      studentClone.querySelector(".umbridge").classList.add("dolores-gray");
+
+    studentClone.querySelector(".inq").addEventListener("click", () => {
+      // if (student.squad) {
+      //   student.squad = false;
+      //   nrOfPrefects = nrOfPrefects - 1;
+      // } else {
+      //   nrOfPrefects = nrOfPrefects + 1;
+      //   if (j > 2) {
+      //     nrOfPrefects = nrOfPrefects - 1;
+      //     student.squad = false;
+      //   } else student.squad = true;
+      // }
+
+      if (student.squad) {
+        student.squad = false;
+      } else student.squad = true;
+
+      showData(students);
+    });
 
     firstName.textContent = student.first_name;
     middleName.textContent = student.middle_name;
@@ -106,6 +130,7 @@ function showData(students) {
       const modalNick = popClone.querySelector("#modal-nick");
       const modalHouse = popClone.querySelector("#modal-house");
       const modalBlood = popClone.querySelector("#modal-blood");
+      const modalInq = popClone.querySelector("#modal-inq");
       const modalImg = popClone.querySelector("#modal-img");
 
       modal.style.display = "block";
@@ -146,10 +171,11 @@ function showData(students) {
 
       modalHouse.textContent = `House: ${student.house}`;
       modalBlood.textContent = `Blood: ${student.blood}`;
+      modalImg.src = student.image;
 
-      if (student.image) {
-        modalImg.src = student.image;
-      }
+      if (student.squad) {
+        modalInq.textContent = "Inquisitorial squad: Yes";
+      } else modalInq.textContent = "Inquisitorial squad: No";
 
       document.querySelector("tbody").appendChild(popClone);
     });

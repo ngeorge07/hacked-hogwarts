@@ -13,6 +13,7 @@ function fetchData(students) {
     house: "",
     blood: "",
     squad: false,
+    prefect: false,
   };
 
   let lastName;

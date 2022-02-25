@@ -45,6 +45,11 @@ td img {
      object-fit: cover;
 }
 
+.dolores-gray {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
 /* ****** STAR ****** */
 [data-field="star"] {
   text-align: center;
