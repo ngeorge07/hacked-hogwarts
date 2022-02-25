@@ -74,7 +74,11 @@ function filter(condition, data) {
 
   return filteredData;
 }
-let nrOfPrefects = 0;
+let hufflepuffPrefects = 0;
+let gryffindorPrefects = 0;
+let ravenclawPrefects = 0;
+let slytherinPrefects = 0;
+
 function showData(students) {
   removeData();
   students.forEach((student) => {
@@ -106,20 +110,32 @@ function showData(students) {
     } else studentClone.querySelector(".prefect").textContent = "☆";
 
     studentClone.querySelector(".prefect").addEventListener("click", () => {
+      if (student.house === "Hufflepuff") {
+        hufflepuffPrefects = countPrefects(hufflepuffPrefects);
+      } else if (student.house === "Gryffindor") {
+        gryffindorPrefects = countPrefects(gryffindorPrefects);
+      } else if (student.house === "Slytherin") {
+        slytherinPrefects = countPrefects(slytherinPrefects);
+      } else ravenclawPrefects = countPrefects(ravenclawPrefects);
+
+      showData(students);
+    });
+
+    function countPrefects(prefectPerHouse) {
       if (student.prefect) {
         student.prefect = false;
-        nrOfPrefects = nrOfPrefects - 1;
+        prefectPerHouse = prefectPerHouse - 1;
       } else {
-        nrOfPrefects = nrOfPrefects + 1;
-        if (nrOfPrefects > 2) {
+        prefectPerHouse = prefectPerHouse + 1;
+        if (prefectPerHouse > 2) {
           window.alert("Can't assign any other prefects");
-          nrOfPrefects = nrOfPrefects - 1;
+          prefectPerHouse = prefectPerHouse - 1;
           student.prefect = false;
         } else student.prefect = true;
       }
 
-      showData(students);
-    });
+      return prefectPerHouse;
+    }
 
     firstName.textContent = student.first_name;
     middleName.textContent = student.middle_name;
