@@ -94,20 +94,29 @@ function showData(students) {
       studentClone.querySelector(".umbridge").classList.add("dolores-gray");
 
     studentClone.querySelector(".inq").addEventListener("click", () => {
-      // if (student.squad) {
-      //   student.squad = false;
-      //   nrOfPrefects = nrOfPrefects - 1;
-      // } else {
-      //   nrOfPrefects = nrOfPrefects + 1;
-      //   if (j > 2) {
-      //     nrOfPrefects = nrOfPrefects - 1;
-      //     student.squad = false;
-      //   } else student.squad = true;
-      // }
-
       if (student.squad) {
         student.squad = false;
       } else student.squad = true;
+
+      showData(students);
+    });
+
+    if (student.prefect) {
+      studentClone.querySelector(".prefect").textContent = "⭐";
+    } else studentClone.querySelector(".prefect").textContent = "☆";
+
+    studentClone.querySelector(".prefect").addEventListener("click", () => {
+      if (student.prefect) {
+        student.prefect = false;
+        nrOfPrefects = nrOfPrefects - 1;
+      } else {
+        nrOfPrefects = nrOfPrefects + 1;
+        if (nrOfPrefects > 2) {
+          window.alert("Can't assign any other prefects");
+          nrOfPrefects = nrOfPrefects - 1;
+          student.prefect = false;
+        } else student.prefect = true;
+      }
 
       showData(students);
     });
