@@ -44,6 +44,10 @@ tbody {
 
 td {
   border: 1px solid black;
+  img {
+    width: 4vw;
+    object-fit: cover;
+  }
 }
 
 /* ****** STAR ****** */

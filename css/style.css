@@ -39,6 +39,12 @@ td {
   border: 1px solid black;
 }
 
+td img {
+  width: 4vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /* ****** STAR ****** */
 [data-field="star"] {
   text-align: center;

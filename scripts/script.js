@@ -7,8 +7,9 @@ fetch("https://petlatkea.dk/2021/hogwarts/students.json")
 
 function passFunction(students) {
   const allData = fetchData(students);
-  let house;
+
   showData(allData);
+  addSortButtons(allData);
 
   const filterDropDown = document.querySelector("#filter");
   filterDropDown.addEventListener("change", () => {
@@ -16,24 +17,66 @@ function passFunction(students) {
     if (filterDropDown.value === "all") {
       removeData();
       showData(allData);
-    } else filter(selectedFilter, allData);
+      addSortButtons(allData);
+    } else {
+      filter(selectedFilter, allData);
+      addSortButtons(filter(selectedFilter, allData));
+    }
+  });
+}
+
+function addSortButtons(data) {
+  document.querySelector("#firstAZ").addEventListener("click", () => {
+    if (document.querySelector("#firstAZ").checked) {
+      sort("first_name", data, 1);
+    }
   });
 
-  function filter(condition, data) {
-    const houseData = [];
-    data.forEach((student) => {
-      if (student.house === condition) {
-        houseData.push(student);
-      }
-    });
+  document.querySelector("#firstZA").addEventListener("click", () => {
+    if (document.querySelector("#firstZA").checked) {
+      sort("first_name", data, -1);
+    }
+  });
 
-    removeData();
+  document.querySelector("#lastAZ").addEventListener("click", () => {
+    if (document.querySelector("#lastAZ").checked) {
+      sort("last_name", data, 1);
+    }
+  });
 
-    showData(houseData);
+  document.querySelector("#lastZA").addEventListener("click", () => {
+    if (document.querySelector("#lastZA").checked) {
+      sort("last_name", data, -1);
+    }
+  });
+}
+
+function sort(sortBy, data, direction) {
+  data = data.sort(sortByProperty);
+
+  function sortByProperty(a, b) {
+    if (a[sortBy] < b[sortBy]) {
+      return -1 * direction;
+    }
+    if (a[sortBy] > b[sortBy]) {
+      return 1 * direction;
+    }
+    return 0;
   }
+
+  showData(data);
+}
+
+function filter(condition, data) {
+  const filteredData = data.filter((student) => student.house === condition);
+  removeData();
+  showData(filteredData);
+
+  return filteredData;
 }
 
 function showData(students) {
+  removeData();
   students.forEach((student) => {
     // console.log(student);
     const studentTemp = document.querySelector("#student-template").content;
