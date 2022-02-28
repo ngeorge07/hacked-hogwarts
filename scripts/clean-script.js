@@ -15,6 +15,7 @@ function fetchData(students) {
     squad: false,
     prefect: false,
     status: false,
+    expelled: false,
   };
 
   let lastName;

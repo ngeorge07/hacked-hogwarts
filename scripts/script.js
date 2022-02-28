@@ -9,6 +9,7 @@ let hufflepuffPrefects = 0;
 let gryffindorPrefects = 0;
 let ravenclawPrefects = 0;
 let slytherinPrefects = 0;
+let expelledStudents = [];
 
 function passFunction(students) {
   const allData = fetchData(students);
@@ -116,19 +117,20 @@ function filter(condition, data) {
   return filteredData;
 }
 
-function showData(students) {
+function showData(students, expel) {
   removeData();
   students.forEach((student) => {
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");
     const btn = studentClone.querySelector(".first-name");
+    const showExpelled = document.querySelector("#show-expelled");
 
     const firstName = studentClone.querySelector(".first-name");
     const middleName = studentClone.querySelector(".middle-name");
     const lastName = studentClone.querySelector(".last-name");
     const house = studentClone.querySelector(".house");
 
-    if (student.status) {
+    if (student.status && !expel) {
       return;
     }
 
@@ -258,12 +260,20 @@ function showData(students) {
           student.status = false;
         } else student.status = true;
 
+        expelledStudents.push(student);
+
         showData(students);
       }
 
+      showExpelled.addEventListener("click", () => {
+        console.log(expelledStudents);
+
+        showData(expelledStudents, true);
+      });
+
       if (student.status) {
         modalStatus.textContent = "Status: expelled";
-        modalExpelBtn.textContent = "Register";
+        modalExpelBtn.remove();
       } else {
         modalStatus.textContent = "Status: active";
         modalExpelBtn.textContent = "Expel";
