@@ -5,23 +5,64 @@ fetch("https://petlatkea.dk/2021/hogwarts/students.json")
   .then((response) => response.json())
   .then(passFunction);
 
+let hufflepuffPrefects = 0;
+let gryffindorPrefects = 0;
+let ravenclawPrefects = 0;
+let slytherinPrefects = 0;
+
 function passFunction(students) {
   const allData = fetchData(students);
+  const filterDropDown = document.querySelector("#filter");
 
   showData(allData);
   addSortButtons(allData);
+  addSearch(allData);
 
-  const filterDropDown = document.querySelector("#filter");
   filterDropDown.addEventListener("change", () => {
     const selectedFilter = filterDropDown.value;
     if (filterDropDown.value === "all") {
       removeData();
       showData(allData);
       addSortButtons(allData);
+      addSearch(allData);
     } else {
       filter(selectedFilter, allData);
       addSortButtons(filter(selectedFilter, allData));
+      addSearch(filter(selectedFilter, allData));
     }
+  });
+}
+
+function searchCondition(input, data) {
+  const searchedData = data.filter((student) => {
+    let result;
+
+    if (!student.last_name && !student.middle_name) {
+      result = student.first_name
+        .toUpperCase()
+        .includes(input.value.toUpperCase());
+    } else if (!student.middle_name) {
+      result =
+        student.first_name.toUpperCase().includes(input.value.toUpperCase()) ||
+        student.last_name.toUpperCase().includes(input.value.toUpperCase());
+    } else
+      result =
+        student.first_name.toUpperCase().includes(input.value.toUpperCase()) ||
+        student.middle_name.toUpperCase().includes(input.value.toUpperCase()) ||
+        student.last_name.toUpperCase().includes(input.value.toUpperCase());
+
+    return result;
+  });
+
+  showData(searchedData);
+  addSortButtons(searchedData);
+}
+
+function addSearch(data) {
+  const searchInput = document.querySelector("#search");
+
+  searchInput.addEventListener("input", () => {
+    searchCondition(searchInput, data);
   });
 }
 
@@ -74,15 +115,10 @@ function filter(condition, data) {
 
   return filteredData;
 }
-let hufflepuffPrefects = 0;
-let gryffindorPrefects = 0;
-let ravenclawPrefects = 0;
-let slytherinPrefects = 0;
 
 function showData(students) {
   removeData();
   students.forEach((student) => {
-    // console.log(student);
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");
     const btn = studentClone.querySelector(".first-name");
