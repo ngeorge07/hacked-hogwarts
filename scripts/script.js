@@ -128,6 +128,10 @@ function showData(students) {
     const lastName = studentClone.querySelector(".last-name");
     const house = studentClone.querySelector(".house");
 
+    if (student.status) {
+      return;
+    }
+
     if (student.squad) {
       studentClone.querySelector(".umbridge").classList.remove("dolores-gray");
     } else
@@ -194,7 +198,10 @@ function showData(students) {
       const modalHouse = popClone.querySelector("#modal-house");
       const modalBlood = popClone.querySelector("#modal-blood");
       const modalInq = popClone.querySelector("#modal-inq");
+      const modalPref = popClone.querySelector("#modal-prefect");
       const modalImg = popClone.querySelector("#modal-img");
+      const modalExpelBtn = popClone.querySelector("#modal-expel");
+      const modalStatus = popClone.querySelector("#modal-status");
 
       modal.style.display = "block";
 
@@ -239,6 +246,28 @@ function showData(students) {
       if (student.squad) {
         modalInq.textContent = "Inquisitorial squad: Yes";
       } else modalInq.textContent = "Inquisitorial squad: No";
+
+      if (student.prefect) {
+        modalPref.textContent = "Prefect: Yes";
+      } else modalPref.textContent = "Prefect: No";
+
+      modalExpelBtn.addEventListener("click", expelStudent);
+
+      function expelStudent() {
+        if (student.status) {
+          student.status = false;
+        } else student.status = true;
+
+        showData(students);
+      }
+
+      if (student.status) {
+        modalStatus.textContent = "Status: expelled";
+        modalExpelBtn.textContent = "Register";
+      } else {
+        modalStatus.textContent = "Status: active";
+        modalExpelBtn.textContent = "Expel";
+      }
 
       document.querySelector("tbody").appendChild(popClone);
     });

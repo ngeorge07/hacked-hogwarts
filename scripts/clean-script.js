@@ -14,6 +14,7 @@ function fetchData(students) {
     blood: "",
     squad: false,
     prefect: false,
+    status: false,
   };
 
   let lastName;
