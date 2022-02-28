@@ -136,7 +136,9 @@ function showData(students) {
     studentClone.querySelector(".inq").addEventListener("click", () => {
       if (student.squad) {
         student.squad = false;
-      } else student.squad = true;
+      } else if (student.blood === "pure" || student.house === "Slytherin") {
+        student.squad = true;
+      }
 
       showData(students);
     });
