@@ -57,8 +57,11 @@ function passFunction(students) {
 
       randomizeBlood(allData);
 
-      allData.push(Me);
+      setTimeout(() => {
+        removeInq(allData);
+      }, 3000);
 
+      allData.push(Me);
       showData(allData);
       hackCounter++;
     } else return;
@@ -67,15 +70,16 @@ function passFunction(students) {
 
 function randomizeBlood(data) {
   data.forEach((student) => {
-    if (student.me) {
-      return;
-    }
     if (student.initialPure) {
       let randomBlood = Math.floor(Math.random() * 2);
       if (randomBlood === 0) {
         student.blood = "half";
       } else student.blood = "muggle";
     } else student.blood = "pure";
+
+    if (student.me) {
+      return;
+    }
   });
 }
 
@@ -154,6 +158,16 @@ function sort(sortBy, data, direction) {
   showData(data);
 }
 
+function removeInq(data) {
+  data.forEach((student) => {
+    if (student.squad) {
+      student.squad = false;
+    }
+  });
+
+  showData(data);
+}
+
 function filter(condition, data) {
   const filteredData = data.filter((student) => student.house === condition);
   showData(filteredData);
@@ -161,7 +175,7 @@ function filter(condition, data) {
   return filteredData;
 }
 
-function showData(students, expel) {
+function showData(students, isExpelled) {
   removeData();
 
   if (hackCounter > 0) {
@@ -179,14 +193,9 @@ function showData(students, expel) {
     const lastName = studentClone.querySelector(".last-name");
     const house = studentClone.querySelector(".house");
 
-    if (student.status && !expel) {
+    if (student.status && !isExpelled) {
       return;
     }
-
-    if (student.squad) {
-      studentClone.querySelector(".umbridge").classList.remove("dolores-gray");
-    } else
-      studentClone.querySelector(".umbridge").classList.add("dolores-gray");
 
     studentClone.querySelector(".inq").addEventListener("click", () => {
       if (student.squad) {
@@ -197,6 +206,16 @@ function showData(students, expel) {
 
       showData(students);
     });
+
+    if (student.squad) {
+      if (hackCounter > 0) {
+        setTimeout(() => {
+          removeInq(students);
+        }, 3000);
+      }
+      studentClone.querySelector(".umbridge").classList.remove("dolores-gray");
+    } else
+      studentClone.querySelector(".umbridge").classList.add("dolores-gray");
 
     if (student.prefect) {
       studentClone.querySelector(".prefect").textContent = "⭐";
