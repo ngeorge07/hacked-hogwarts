@@ -9,6 +9,7 @@ let hufflepuffPrefects = 0;
 let gryffindorPrefects = 0;
 let ravenclawPrefects = 0;
 let slytherinPrefects = 0;
+let hackCounter = 0;
 let expelledStudents = [];
 
 function passFunction(students) {
@@ -21,6 +22,7 @@ function passFunction(students) {
 
   filterDropDown.addEventListener("change", () => {
     const selectedFilter = filterDropDown.value;
+
     if (filterDropDown.value === "all") {
       removeData();
       showData(allData);
@@ -31,6 +33,45 @@ function passFunction(students) {
       addSortButtons(filter(selectedFilter, allData));
       addSearch(filter(selectedFilter, allData));
     }
+  });
+
+  window.hackTheSystem = hackTheSystem;
+
+  function hackTheSystem() {
+    if (hackCounter === 0) {
+      const Me = {
+        first_name: "George",
+        nick_name: "Gorgeous George",
+        middle_name: "",
+        last_name: "Nicolae",
+        image: "",
+        gender: "Boy",
+        house: "Hufflepuff",
+        blood: "muggle",
+        squad: false,
+        prefect: false,
+        status: false,
+        expelled: false,
+      };
+
+      randomizeBlood(allData);
+
+      allData.push(Me);
+
+      showData(allData);
+      hackCounter++;
+    } else return;
+  }
+}
+
+function randomizeBlood(data) {
+  data.forEach((student) => {
+    if (student.initialPure) {
+      let randomBlood = Math.floor(Math.random() * 2);
+      if (randomBlood === 0) {
+        student.blood = "half";
+      } else student.blood = "muggle";
+    } else student.blood = "pure";
   });
 }
 
@@ -111,7 +152,6 @@ function sort(sortBy, data, direction) {
 
 function filter(condition, data) {
   const filteredData = data.filter((student) => student.house === condition);
-  removeData();
   showData(filteredData);
 
   return filteredData;
@@ -119,6 +159,11 @@ function filter(condition, data) {
 
 function showData(students, expel) {
   removeData();
+
+  if (hackCounter > 0) {
+    randomizeBlood(students);
+  }
+
   students.forEach((student) => {
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");

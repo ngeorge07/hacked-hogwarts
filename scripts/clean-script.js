@@ -16,6 +16,7 @@ function fetchData(students) {
     prefect: false,
     status: false,
     expelled: false,
+    initialPure: false,
   };
 
   let lastName;
@@ -154,6 +155,7 @@ function fetchData(students) {
       pure.forEach((e) => {
         if (s.last_name === e) {
           s.blood = "pure";
+          s.initialPure = true;
         } else
           half.forEach((h) => {
             if (s.last_name === h) {
