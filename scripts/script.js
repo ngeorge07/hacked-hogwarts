@@ -52,6 +52,7 @@ function passFunction(students) {
         prefect: false,
         status: false,
         expelled: false,
+        me: true,
       };
 
       randomizeBlood(allData);
@@ -66,6 +67,9 @@ function passFunction(students) {
 
 function randomizeBlood(data) {
   data.forEach((student) => {
+    if (student.me) {
+      return;
+    }
     if (student.initialPure) {
       let randomBlood = Math.floor(Math.random() * 2);
       if (randomBlood === 0) {
@@ -301,6 +305,11 @@ function showData(students, expel) {
       modalExpelBtn.addEventListener("click", expelStudent);
 
       function expelStudent() {
+        if (student.me) {
+          window.alert("Can't expel me");
+          return;
+        }
+
         if (student.status) {
           student.status = false;
         } else student.status = true;
