@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #201f29;
+}
+
 button {
   cursor: pointer;
 }
@@ -16,37 +20,59 @@ button {
 //   content: "⇑";
 // }
 
-#list {
-  border-collapse: collapse;
-  width: 100%;
+// img {
+// width: 4vw;
+// object-fit: cover;
+// }
+
+#student-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  max-width: 90%;
+  margin: auto;
 }
 
-tbody {
-  text-align: center;
+.student-card {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 1rem;
+  border: 2px solid #ffed86;
+  border-radius: 14px;
+  justify-content: space-around;
+  background-color: #524d4d;
+  color: white;
 
-  tr {
-    cursor: pointer;
+  h2 {
+    align-self: center;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .student-image {
+    width: 7rem;
+    align-self: center;
+    margin: 0.5rem 0 1rem 0;
   }
 }
 
-#list tbody tr td {
-  padding: 4px;
-}
-
-#list tbody tr:nth-child(odd) td {
-  background-color: lightblue;
-  border-right: rgb(240, 249, 255) 1px dotted;
-}
-
-#list tbody tr:nth-child(even) td {
-  border-right: rgb(171, 219, 252) 1px dotted;
-}
-
-td {
-  border: 1px solid black;
-  img {
-    width: 4vw;
+.student-symbols {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0;
+  .umbridge {
+    width: 3rem;
     object-fit: cover;
+  }
+
+  img {
+    width: 4rem;
+    object-fit: cover;
+  }
+
+  button {
+    font-size: 3rem;
+    background: none;
+    border: none;
   }
 }
 
@@ -65,7 +91,7 @@ td {
 // modal
 /* The Modal (background) */
 .modal {
-  // display: none; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 150px; /* Location of the box */

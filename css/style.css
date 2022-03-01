@@ -5,44 +5,82 @@
           box-sizing: border-box;
 }
 
+body {
+  background-color: #201f29;
+}
+
 button {
   cursor: pointer;
 }
 
-#list {
-  border-collapse: collapse;
-  width: 100%;
+#student-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(275px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  max-width: 90%;
+  margin: auto;
 }
 
-tbody {
+.student-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 2rem;
+  padding: 1rem;
+  border: 2px solid #ffed86;
+  border-radius: 14px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #524d4d;
+  color: white;
+}
+
+.student-card h2 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   text-align: center;
+  font-size: 1.2rem;
 }
 
-tbody tr {
-  cursor: pointer;
+.student-card .student-image {
+  width: 7rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0.5rem 0 1rem 0;
 }
 
-#list tbody tr td {
-  padding: 4px;
+.student-symbols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 1rem 0;
 }
 
-#list tbody tr:nth-child(odd) td {
-  background-color: lightblue;
-  border-right: #f0f9ff 1px dotted;
-}
-
-#list tbody tr:nth-child(even) td {
-  border-right: #abdbfc 1px dotted;
-}
-
-td {
-  border: 1px solid black;
-}
-
-td img {
-  width: 4vw;
+.student-symbols .umbridge {
+  width: 3rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.student-symbols img {
+  width: 4rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.student-symbols button {
+  font-size: 3rem;
+  background: none;
+  border: none;
 }
 
 .dolores-gray {
@@ -59,6 +97,8 @@ td img {
 
 /* The Modal (background) */
 .modal {
+  display: none;
+  /* Hidden by default */
   position: fixed;
   /* Stay in place */
   z-index: 1;
