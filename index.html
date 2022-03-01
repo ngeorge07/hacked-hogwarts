@@ -26,25 +26,32 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="modal-header">
-            <span class="close">&times;</span>
             <h2 id="modal-fullname">Harry Potter</h2>
+            <span class="close">&times;</span>
           </div>
           <div id="detailed-info">
-            <img id="modal-img" src="assets/abbott_h.png" alt="" />
+            <div id="modal-images">
+              <img id="modal-student-img" src="assets/abbott_h.png" alt="" />
+              <img
+                id="modal-crest"
+                src="assets/house-crests/gryffindor.png"
+                alt=""
+              />
+            </div>
 
-            <ul class="modal-body">
-              <li id="modal-first">First name:</li>
-              <li id="modal-middle">Middle name:</li>
-              <li id="modal-nick">Nickname:</li>
-              <li id="modal-last">Last name:</li>
-              <li id="modal-house">House:</li>
-              <li id="modal-inq">Inquisitorial squad:</li>
-              <li id="modal-prefect">Prefect:</li>
-              <li id="modal-blood">Blood:</li>
-              <li id="modal-status">Status:</li>
-            </ul>
+            <div class="modal-body">
+              <p id="modal-first">First name: Hermoine</p>
+              <p id="modal-middle">Middle name: Juliane</p>
+              <p id="modal-last">Last name: Granger</p>
+              <p id="modal-nick">Nickname: N/A</p>
+              <p id="modal-house">House: Gryffindor</p>
+              <p id="modal-inq">Inquisitorial squad: Yes</p>
+              <p id="modal-prefect">Prefect: No</p>
+              <p id="modal-blood">Blood: muggle</p>
+              <p id="modal-status">Status: enrolled</p>
 
-            <button id="modal-expel">Expel</button>
+              <button id="modal-expel">Expel</button>
+            </div>
           </div>
         </div>
       </div>

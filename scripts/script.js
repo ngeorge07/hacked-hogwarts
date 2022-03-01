@@ -268,10 +268,11 @@ function showData(students, isExpelled) {
       const modalLast = popClone.querySelector("#modal-last");
       const modalNick = popClone.querySelector("#modal-nick");
       const modalHouse = popClone.querySelector("#modal-house");
+      const modalCrest = popClone.querySelector("#modal-crest");
       const modalBlood = popClone.querySelector("#modal-blood");
       const modalInq = popClone.querySelector("#modal-inq");
       const modalPref = popClone.querySelector("#modal-prefect");
-      const modalImg = popClone.querySelector("#modal-img");
+      const modalImg = popClone.querySelector("#modal-student-img");
       const modalExpelBtn = popClone.querySelector("#modal-expel");
       const modalStatus = popClone.querySelector("#modal-status");
 
@@ -287,18 +288,20 @@ function showData(students, isExpelled) {
         }
       };
 
+      modalHouse.textContent = `House: ${student.house}`;
+
       if (student.house === "Gryffindor") {
         modalHeader.classList.add("gryffindor-color");
-        modalHouse.innerHTML = `<img src="../assets/house-crests/gryffindor.png">`;
+        modalCrest.src = "../assets/house-crests/gryffindor.png";
       } else if (student.house === "Hufflepuff") {
         modalHeader.classList.add("hufflepuff-color");
-        modalHouse.innerHTML = `<img src="../assets/house-crests/hufflepuff.png">`;
+        modalCrest.src = "../assets/house-crests/hufflepuff.png";
       } else if (student.house === "Slytherin") {
         modalHeader.classList.add("slytherin-color");
-        modalHouse.innerHTML = `<img src="../assets/house-crests/slytherin.png">`;
+        modalCrest.src = "../assets/house-crests/slytherin.png";
       } else {
         modalHeader.classList.add("ravenclaw-color");
-        modalHouse.innerHTML = `<img src="../assets/house-crests/ravenclaw.png">`;
+        modalCrest.src = "../assets/house-crests/ravenclaw.png";
       }
 
       modalFullName.textContent = checkNames(

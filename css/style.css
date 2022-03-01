@@ -59,8 +59,6 @@ td img {
 
 /* The Modal (background) */
 .modal {
-  display: none;
-  /* Hidden by default */
   position: fixed;
   /* Stay in place */
   z-index: 1;
@@ -88,7 +86,7 @@ td img {
   margin: auto;
   padding: 0;
   border: 1px solid #145d7e;
-  max-width: 40%;
+  max-width: 50%;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
@@ -137,6 +135,12 @@ td img {
 }
 
 .modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 2px 16px;
   background-color: #1a7fac;
   color: white;
@@ -161,15 +165,32 @@ td img {
 }
 
 .modal-body {
-  padding: 10px 16px;
-  list-style-type: none;
-}
-
-.modal-body img {
-  width: 3rem;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-row-align: stretch;
+      align-self: stretch;
+  gap: 0.5rem;
 }
 
 #detailed-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #524d4d;
+  color: white;
+}
+
+#detailed-info #modal-images {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,21 +198,70 @@ td img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#detailed-info li {
-  margin-top: 1rem;
+#detailed-info #modal-student-img {
+  width: 10rem;
+  margin-bottom: 0.5rem;
 }
 
-#detailed-info img {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+#detailed-info #modal-crest {
+  width: 4rem;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1160px) {
   .modal-content {
-    max-width: 80%;
+    max-width: 65%;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .modal-content {
+    max-width: 85%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .modal {
+    padding-top: 75px;
+  }
+  .modal-content {
+    max-width: 75%;
+  }
+  #detailed-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #detailed-info #modal-student-img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .modal-body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .modal-body button {
+    width: 60%;
+  }
+  #modal-nick,
+  #modal-status {
+    margin-bottom: 1rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
