@@ -143,9 +143,30 @@ td img {
   border-radius: 11px 11px 0 0;
 }
 
+/* ****** House colors ****** */
+.gryffindor-color {
+  background-color: #ae0001;
+}
+
+.hufflepuff-color {
+  background-color: #ffdb00;
+}
+
+.ravenclaw-color {
+  background-color: #222f5b;
+}
+
+.slytherin-color {
+  background-color: #2a623d;
+}
+
 .modal-body {
   padding: 10px 16px;
   list-style-type: none;
+}
+
+.modal-body img {
+  width: 3rem;
 }
 
 #detailed-info {

@@ -61,7 +61,7 @@ function passFunction(students) {
         removeInq(allData);
       }, 3000);
 
-      allData.push(Me);
+      allData.unshift(Me);
       showData(allData);
       hackCounter++;
     } else return;
@@ -260,6 +260,8 @@ function showData(students, isExpelled) {
       const modal = popClone.getElementById("myModal");
       const span = popClone.querySelector(".close");
 
+      const modalHeader = popClone.querySelector(".modal-header");
+
       const modalFullName = popClone.querySelector("#modal-fullname");
       const modalFirst = popClone.querySelector("#modal-first");
       const modalMiddle = popClone.querySelector("#modal-middle");
@@ -285,6 +287,20 @@ function showData(students, isExpelled) {
         }
       };
 
+      if (student.house === "Gryffindor") {
+        modalHeader.classList.add("gryffindor-color");
+        modalHouse.innerHTML = `<img src="../assets/house-crests/gryffindor.png">`;
+      } else if (student.house === "Hufflepuff") {
+        modalHeader.classList.add("hufflepuff-color");
+        modalHouse.innerHTML = `<img src="../assets/house-crests/hufflepuff.png">`;
+      } else if (student.house === "Slytherin") {
+        modalHeader.classList.add("slytherin-color");
+        modalHouse.innerHTML = `<img src="../assets/house-crests/slytherin.png">`;
+      } else {
+        modalHeader.classList.add("ravenclaw-color");
+        modalHouse.innerHTML = `<img src="../assets/house-crests/ravenclaw.png">`;
+      }
+
       modalFullName.textContent = checkNames(
         student.first_name,
         student.middle_name,
@@ -309,7 +325,7 @@ function showData(students, isExpelled) {
         ).nickName
       }`;
 
-      modalHouse.textContent = `House: ${student.house}`;
+      // modalHouse.textContent = `House: ${student.house}`;
       modalBlood.textContent = `Blood: ${student.blood}`;
       modalImg.src = student.image;
 
@@ -339,8 +355,6 @@ function showData(students, isExpelled) {
       }
 
       showExpelled.addEventListener("click", () => {
-        console.log(expelledStudents);
-
         showData(expelledStudents, true);
       });
 
