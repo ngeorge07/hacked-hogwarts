@@ -182,19 +182,33 @@ function showData(students, isExpelled) {
     randomizeBlood(students);
   }
 
+  console.log(students);
+
   students.forEach((student) => {
+    console.log(student);
+
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");
-    const btn = studentClone.querySelector(".first-name");
+    const btn = studentClone.querySelector(".view-det");
     const showExpelled = document.querySelector("#show-expelled");
 
-    const firstName = studentClone.querySelector(".first-name");
-    const middleName = studentClone.querySelector(".middle-name");
-    const lastName = studentClone.querySelector(".last-name");
-    const house = studentClone.querySelector(".house");
+    const studentCard = studentClone.querySelector(".student-card");
+    const studentFullName = studentClone.querySelector(".full-name");
+    const studentCrest = studentClone.querySelector(".card-student-crest");
+    const studentImage = studentClone.querySelector(".card-student-image");
+    const studentGender = studentClone.querySelector(".card-gender");
+    const studentBlood = studentClone.querySelector(".card-blood");
 
     if (student.status && !isExpelled) {
       return;
+    }
+
+    studentFullName.textContent = `${student.first_name} ${student.last_name}`;
+    studentGender.textContent = `Gender: ${student.gender}`;
+    studentBlood.textContent = `Blood status: ${student.blood}`;
+
+    if (student.image) {
+      studentImage.src = student.image;
     }
 
     studentClone.querySelector(".inq").addEventListener("click", () => {
@@ -249,10 +263,19 @@ function showData(students, isExpelled) {
       return prefectPerHouse;
     }
 
-    firstName.textContent = student.first_name;
-    middleName.textContent = student.middle_name;
-    lastName.textContent = student.last_name;
-    house.textContent = student.house;
+    if (student.house === "Gryffindor") {
+      studentCard.classList.add("gryffindor-border");
+      studentCrest.src = "../assets/house-crests/gryffindor.png";
+    } else if (student.house === "Hufflepuff") {
+      studentCard.classList.add("hufflepuff-border");
+      studentCrest.src = "../assets/house-crests/hufflepuff.png";
+    } else if (student.house === "Slytherin") {
+      studentCard.classList.add("slytherin-border");
+      studentCrest.src = "../assets/house-crests/slytherin.png";
+    } else {
+      studentCard.classList.add("ravenclaw-border");
+      studentCrest.src = "../assets/house-crests/ravenclaw.png";
+    }
 
     btn.addEventListener("click", () => {
       const popTemp = document.querySelector("#pop").content;
@@ -369,10 +392,10 @@ function showData(students, isExpelled) {
         modalExpelBtn.textContent = "Expel";
       }
 
-      document.querySelector("tbody").appendChild(popClone);
+      document.querySelector("#student-container").appendChild(popClone);
     });
 
-    document.querySelector("tbody").appendChild(studentClone);
+    document.querySelector("#student-container").appendChild(studentClone);
   });
 }
 
@@ -408,7 +431,7 @@ function checkNames(first, middle, last, nick) {
 }
 
 function removeData() {
-  let parent = document.querySelector("tbody");
+  let parent = document.querySelector("#student-container");
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }

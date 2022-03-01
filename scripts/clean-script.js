@@ -160,6 +160,7 @@ function fetchData(students) {
           half.forEach((h) => {
             if (s.last_name === h) {
               s.blood = "half";
+              s.initialPure = false;
             }
           });
       });

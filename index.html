@@ -9,7 +9,7 @@
   </head>
   <body>
     <template id="student-template">
-      <tr class="new-row">
+      <!-- <tr class="new-row">
         <td class="prefect">☆</td>
         <td class="inq">
           <input
@@ -23,7 +23,27 @@
         <td class="middle-name">MIDDLE NAME</td>
         <td class="last-name">LAST NAME</td>
         <td class="house">HOUSE</td>
-      </tr>
+      </tr> -->
+
+      <div class="student-card">
+        <h2 class="full-name">Hermoine Granger</h2>
+        <img class="card-student-image" src="" alt="" />
+        <p class="card-gender">Gender: female</p>
+        <p class="card-blood">Blood status: muggle</p>
+
+        <div class="student-symbols">
+          <input
+            type="image"
+            src="assets/umbrindge.png"
+            class="inq umbridge"
+            aria-label="test"
+          />
+          <img class="card-student-crest" src="" alt="" />
+          <button class="prefect">☆</button>
+        </div>
+
+        <button class="view-det">View details</button>
+      </div>
     </template>
 
     <template id="pop">
@@ -117,88 +137,11 @@
     </header>
 
     <main>
-      <div id="student-container">
-        <div class="student-card">
-          <h2>Hermoine Granger</h2>
-          <img class="student-image" src="assets/granger_h.png" alt="" />
-          <p>Gender: female</p>
-          <p>Blood status: muggle</p>
-
-          <div class="student-symbols">
-            <input
-              type="image"
-              src="assets/umbrindge.png"
-              class="umbridge"
-              aria-label="test"
-            />
-            <img src="assets/house-crests/gryffindor.png" alt="" />
-            <button>☆</button>
-          </div>
-
-          <button>View details</button>
-        </div>
-        <div class="student-card">
-          <h2>Hermoine Jean Granger</h2>
-          <img class="student-image" src="assets/granger_h.png" alt="" />
-          <p>Gender: female</p>
-          <p>Blood status: muggle</p>
-
-          <div class="student-symbols">
-            <input
-              type="image"
-              src="assets/umbrindge.png"
-              class="umbridge"
-              aria-label="test"
-            />
-            <img src="assets/house-crests/gryffindor.png" alt="" />
-            <button>☆</button>
-          </div>
-
-          <button>View details</button>
-        </div>
-        <div class="student-card">
-          <h2>Hermoine Jean Granger</h2>
-          <img class="student-image" src="assets/granger_h.png" alt="" />
-          <p>Gender: female</p>
-          <p>Blood status: muggle</p>
-
-          <div class="student-symbols">
-            <input
-              type="image"
-              src="assets/umbrindge.png"
-              class="umbridge"
-              aria-label="test"
-            />
-            <img src="assets/house-crests/gryffindor.png" alt="" />
-            <button>☆</button>
-          </div>
-
-          <button>View details</button>
-        </div>
-        <div class="student-card">
-          <h2>Hermoine Jean Granger</h2>
-          <img class="student-image" src="assets/granger_h.png" alt="" />
-          <p>Gender: female</p>
-          <p>Blood status: muggle</p>
-
-          <div class="student-symbols">
-            <input
-              type="image"
-              src="assets/umbrindge.png"
-              class="umbridge"
-              aria-label="test"
-            />
-            <img src="assets/house-crests/gryffindor.png" alt="" />
-            <button>☆</button>
-          </div>
-
-          <button>View details</button>
-        </div>
-      </div>
+      <div id="student-container"></div>
     </main>
 
     <footer></footer>
 
-    <!-- <script type="module" src="scripts/script.js"></script> -->
+    <script type="module" src="scripts/script.js"></script>
   </body>
 </html>

@@ -48,7 +48,7 @@ button {
     text-align: center;
     font-size: 1.2rem;
   }
-  .student-image {
+  .card-student-image {
     width: 7rem;
     align-self: center;
     margin: 0.5rem 0 1rem 0;
@@ -180,6 +180,22 @@ button {
 
 .slytherin-color {
   background-color: #2a623d;
+}
+
+.gryffindor-border {
+  border-color: #ae0001;
+}
+
+.hufflepuff-border {
+  border-color: #ffdb00;
+}
+
+.ravenclaw-border {
+  border-color: #222f5b;
+}
+
+.slytherin-border {
+  border-color: #2a623d;
 }
 
 .modal-body {
