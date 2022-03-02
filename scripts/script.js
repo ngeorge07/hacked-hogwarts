@@ -12,8 +12,8 @@ let slytherinPrefects = 0;
 let hackCounter = 0;
 let expelledStudents = [];
 
-function passFunction(students) {
-  const allData = fetchData(students);
+async function passFunction(students) {
+  const allData = await fetchData(students);
   const filterDropDown = document.querySelector("#filter");
 
   showData(allData);
@@ -182,10 +182,10 @@ function showData(students, isExpelled) {
     randomizeBlood(students);
   }
 
-  console.log(students);
-
   students.forEach((student) => {
-    console.log(student);
+    console.log(student.blood);
+
+    // console.log(JSON.stringify(student));
 
     const studentTemp = document.querySelector("#student-template").content;
     const studentClone = studentTemp.cloneNode("true");

@@ -1,6 +1,6 @@
 "use strict";
 
-function fetchData(students) {
+async function fetchData(students) {
   const newData = [];
 
   const Student = {
@@ -142,35 +142,28 @@ function fetchData(students) {
 
     newData.push(newStudent);
   });
+  console.log(newData);
 
-  fetch("https://petlatkea.dk/2021/hogwarts/families.json")
-    .then((response) => response.json())
-    .then(addBlood);
+  const res = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
+  const types = await res.json();
 
-  function addBlood(bloodTypes) {
+  async function addBlood(bloodTypes) {
     const pure = bloodTypes.pure;
     const half = bloodTypes.half;
-
-    newData.forEach((s) => {
-      pure.forEach((e) => {
-        if (s.last_name === e) {
-          s.blood = "pure";
-          s.initialPure = true;
-        } else
-          half.forEach((h) => {
-            if (s.last_name === h) {
-              s.blood = "half";
-              s.initialPure = false;
-            }
-          });
-      });
-
-      if (!s.blood) {
-        s.blood = "muggle";
+    const nextData = newData.map((s) => {
+      if (pure.includes(s.last_name)) {
+        return { ...s, blood: "pure", initialPure: true };
       }
+      if (half.includes(s.last_name)) {
+        return { ...s, blood: "half" };
+      }
+      return { ...s, blood: "muggle" };
     });
+
+    return nextData;
   }
-  return newData;
+
+  return addBlood(types);
 }
 
 export default fetchData;

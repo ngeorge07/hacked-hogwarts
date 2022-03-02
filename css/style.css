@@ -9,6 +9,10 @@ body {
   background-color: #201f29;
 }
 
+header {
+  color: white;
+}
+
 button {
   cursor: pointer;
 }
@@ -266,7 +270,7 @@ button {
 }
 
 #detailed-info #modal-crest {
-  width: 4rem;
+  width: 4.5rem;
 }
 
 @media screen and (max-width: 1160px) {
