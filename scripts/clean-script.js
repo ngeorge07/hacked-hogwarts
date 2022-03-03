@@ -142,7 +142,6 @@ async function fetchData(students) {
 
     newData.push(newStudent);
   });
-  console.log(newData);
 
   const res = await fetch("https://petlatkea.dk/2021/hogwarts/families.json");
   const types = await res.json();

@@ -9,22 +9,6 @@
   </head>
   <body>
     <template id="student-template">
-      <!-- <tr class="new-row">
-        <td class="prefect">☆</td>
-        <td class="inq">
-          <input
-            type="image"
-            src="assets/umbrindge.png"
-            class="umbridge"
-            aria-label="test"
-          />
-        </td>
-        <td class="first-name">FIRST NAME</td>
-        <td class="middle-name">MIDDLE NAME</td>
-        <td class="last-name">LAST NAME</td>
-        <td class="house">HOUSE</td>
-      </tr> -->
-
       <div class="student-card">
         <h2 class="full-name">Hermoine Granger</h2>
         <img class="card-student-image" src="" alt="" />
@@ -39,7 +23,7 @@
             aria-label="test"
           />
           <img class="card-student-crest" src="" alt="" />
-          <button class="prefect">☆</button>
+          <button class="prefect">⭐</button>
         </div>
 
         <button class="view-det">View details</button>
@@ -152,32 +136,28 @@
         </div>
 
         <div>
-          <p>Displayed students: 37</p>
-          <p>Expelled students: 5</p>
+          <p id="displayed-counter">Displayed students: 37</p>
+          <p id="expelled-counter">Expelled students: 5</p>
         </div>
 
         <div id="houses-counter">
-          <p>Enrolled students: 100</p>
+          <p id="enrolled-counter">Enrolled students: 100</p>
 
           <div>
             <img src="assets/house-crests/gryffindor.png" alt="" />
-            <span>37</span>
+            <span id="gryffindor-counter">37</span>
           </div>
           <div>
             <img src="assets/house-crests/hufflepuff.png" alt="" />
-            <span>37</span>
+            <span id="hufflepuff-counter">37</span>
           </div>
           <div>
             <img src="assets/house-crests/ravenclaw.png" alt="" />
-            <span>37</span>
+            <span id="ravenclaw-counter">37</span>
           </div>
           <div>
-            <img
-              src="assets/house-crests/slytherin.png"
-              id="slytherin-header"
-              alt=""
-            />
-            <span>37</span>
+            <img src="assets/house-crests/slytherin.png" alt="" />
+            <span id="slytherin-counter">37</span>
           </div>
         </div>
       </div>
@@ -187,6 +167,40 @@
     </header>
 
     <main>
+      <div id="customModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-fullname">Error</h2>
+            <span class="close">&times;</span>
+          </div>
+          <div id="detailed-info">
+            <!-- <div id="modal-images">
+              <img id="modal-student-img" src="assets/abbott_h.png" alt="" />
+              <img
+                id="modal-crest"
+                src="assets/house-crests/gryffindor.png"
+                alt=""
+              />
+            </div>
+
+            <div class="modal-body">
+              <p id="modal-first">First name: Hermoine</p>
+              <p id="modal-middle">Middle name: Juliane</p>
+              <p id="modal-last">Last name: Granger</p>
+              <p id="modal-nick">Nickname: N/A</p>
+              <p id="modal-house">House: Gryffindor</p>
+              <p id="modal-inq">Inquisitorial squad: Yes</p>
+              <p id="modal-prefect">Prefect: No</p>
+              <p id="modal-blood">Blood: muggle</p>
+              <p id="modal-status">Status: enrolled</p>
+
+              <button id="modal-expel">Expel</button>
+            </div> -->
+            <p>Can't assign any other prefects in this house.</p>
+          </div>
+        </div>
+      </div>
       <div id="student-container"></div>
     </main>
 
