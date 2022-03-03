@@ -83,54 +83,104 @@
     </template>
 
     <header>
-      <label for="filter">Filter:</label>
+      <h1>Hogwarts Characters Database</h1>
 
-      <select name="hogwarts-filter" id="filter" autocomplete="off">
-        <option value="all">No filter</option>
-        <option value="Gryffindor">Gryffindor</option>
-        <option value="Ravenclaw">Ravenclaw</option>
-        <option value="Hufflepuff">Hufflepuff</option>
-        <option value="Slytherin">Slytherin</option>
-      </select>
+      <div id="features">
+        <div id="searh-filter">
+          <div>
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" autocomplete="off" />
+          </div>
 
-      <input
-        type="radio"
-        id="firstAZ"
-        value="firstAZ"
-        name="sort"
-        autocomplete="off"
-      />
-      <label for="firstAZ">First name A-Z</label>
+          <div>
+            <label for="filter">Filter:</label>
+            <select name="hogwarts-filter" id="filter" autocomplete="off">
+              <option value="all">No filter</option>
+              <option value="Gryffindor">Gryffindor</option>
+              <option value="Ravenclaw">Ravenclaw</option>
+              <option value="Hufflepuff">Hufflepuff</option>
+              <option value="Slytherin">Slytherin</option>
+            </select>
+          </div>
+        </div>
 
-      <input
-        type="radio"
-        id="firstZA"
-        value="firstZA"
-        name="sort"
-        autocomplete="off"
-      />
-      <label for="firstZA">First name Z-A</label>
+        <div id="sort-options">
+          <p>Sort</p>
+          <div>
+            <input
+              type="radio"
+              id="firstAZ"
+              value="firstAZ"
+              name="sort"
+              autocomplete="off"
+            />
+            <label for="firstAZ">First name A-Z</label>
+          </div>
 
-      <input
-        type="radio"
-        id="lastAZ"
-        value="lastAZ"
-        name="sort"
-        autocomplete="off"
-      />
-      <label for="lastAZ">Last name A-Z</label>
+          <div>
+            <input
+              type="radio"
+              id="firstZA"
+              value="firstZA"
+              name="sort"
+              autocomplete="off"
+            />
+            <label for="firstZA">First name Z-A</label>
+          </div>
 
-      <input
-        type="radio"
-        id="lastZA"
-        value="lastZA"
-        name="sort"
-        autocomplete="off"
-      />
-      <label for="lastZA">Last name Z-A</label>
+          <div>
+            <input
+              type="radio"
+              id="lastAZ"
+              value="lastAZ"
+              name="sort"
+              autocomplete="off"
+            />
+            <label for="lastAZ">Last name A-Z</label>
+          </div>
 
-      <label for="search">Search:</label>
-      <input type="text" id="search" name="search" autocomplete="off" />
+          <div>
+            <input
+              type="radio"
+              id="lastZA"
+              value="lastZA"
+              name="sort"
+              autocomplete="off"
+            />
+            <label for="lastZA">Last name Z-A</label>
+          </div>
+        </div>
+
+        <div>
+          <p>Displayed students: 37</p>
+          <p>Expelled students: 5</p>
+        </div>
+
+        <div id="houses-counter">
+          <p>Enrolled students: 100</p>
+
+          <div>
+            <img src="assets/house-crests/gryffindor.png" alt="" />
+            <span>37</span>
+          </div>
+          <div>
+            <img src="assets/house-crests/hufflepuff.png" alt="" />
+            <span>37</span>
+          </div>
+          <div>
+            <img src="assets/house-crests/ravenclaw.png" alt="" />
+            <span>37</span>
+          </div>
+          <div>
+            <img
+              src="assets/house-crests/slytherin.png"
+              id="slytherin-header"
+              alt=""
+            />
+            <span>37</span>
+          </div>
+        </div>
+      </div>
 
       <button id="show-expelled">Show Expelled students</button>
       <button id="show-all">Show all students</button>

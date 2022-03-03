@@ -10,6 +10,13 @@ body {
 
 header {
   color: white;
+  max-width: 90%;
+  margin: auto;
+
+  img {
+    object-fit: cover;
+    width: 2.5rem;
+  }
 }
 
 button {
@@ -28,6 +35,47 @@ button {
 // width: 4vw;
 // object-fit: cover;
 // }
+
+#features {
+  display: flex;
+  justify-content: space-between;
+}
+
+#search-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+#sort-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 1fr;
+  column-gap: 1rem;
+
+  p {
+    grid-area: 1 / 1 /2 /3;
+  }
+}
+
+#houses-counter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 1.5rem;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    grid-area: 1 / 1 / 2 / -1;
+  }
+
+  span {
+    margin-left: 0.2rem;
+  }
+}
 
 #student-container {
   display: grid;
@@ -241,6 +289,21 @@ button {
   }
 }
 
+@media screen and (max-width: 995px) {
+  #features {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #houses-counter {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+  }
+}
+
 @media screen and (max-width: 860px) {
   .modal-content {
     max-width: 85%;
@@ -248,6 +311,13 @@ button {
 }
 
 @media screen and (max-width: 650px) {
+  #features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   .modal {
     padding-top: 75px;
   }
@@ -265,6 +335,11 @@ button {
 }
 
 @media screen and (max-width: 520px) {
+  #houses-counter {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
   .modal-body {
     display: flex;
     flex-direction: column;

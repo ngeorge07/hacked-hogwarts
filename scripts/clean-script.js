@@ -151,12 +151,14 @@ async function fetchData(students) {
     const pure = bloodTypes.pure;
     const half = bloodTypes.half;
     const nextData = newData.map((s) => {
-      if (pure.includes(s.last_name)) {
-        return { ...s, blood: "pure", initialPure: true };
-      }
       if (half.includes(s.last_name)) {
         return { ...s, blood: "half" };
       }
+
+      if (pure.includes(s.last_name)) {
+        return { ...s, blood: "pure", initialPure: true };
+      }
+
       return { ...s, blood: "muggle" };
     });
 

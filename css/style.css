@@ -11,10 +11,85 @@ body {
 
 header {
   color: white;
+  max-width: 90%;
+  margin: auto;
+}
+
+header img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 2.5rem;
 }
 
 button {
   cursor: pointer;
+}
+
+#features {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#search-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#sort-options {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 0.5fr 0.5fr 1fr;
+      grid-template-rows: 0.5fr 0.5fr 1fr;
+  -webkit-column-gap: 1rem;
+          column-gap: 1rem;
+}
+
+#sort-options p {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 1 / 1 /2 /3;
+}
+
+#houses-counter {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr;
+  gap: 1.5rem;
+}
+
+#houses-counter div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#houses-counter p {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-area: 1 / 1 / 2 / -1;
+}
+
+#houses-counter span {
+  margin-left: 0.2rem;
 }
 
 #student-container {
@@ -279,6 +354,26 @@ button {
   }
 }
 
+@media screen and (max-width: 995px) {
+  #features {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  #houses-counter {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: auto 1fr;
+        grid-template-rows: auto 1fr;
+    -webkit-column-gap: 1.5rem;
+            column-gap: 1.5rem;
+    row-gap: 0.5rem;
+  }
+}
+
 @media screen and (max-width: 860px) {
   .modal-content {
     max-width: 85%;
@@ -286,6 +381,19 @@ button {
 }
 
 @media screen and (max-width: 650px) {
+  #features {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 1.5rem;
+  }
   .modal {
     padding-top: 75px;
   }
@@ -304,6 +412,11 @@ button {
 }
 
 @media screen and (max-width: 520px) {
+  #houses-counter {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
   .modal-body {
     display: -webkit-box;
     display: -ms-flexbox;
