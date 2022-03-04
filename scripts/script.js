@@ -202,7 +202,10 @@ function addSearch(data) {
   const searchInput = document.querySelector("#search");
 
   searchInput.addEventListener("input", () => {
-    if ((searchInput.value === "hary" || searchInput === "Hary") && !isHacked) {
+    if (
+      (searchInput.value === "hary" || searchInput.value === "Hary") &&
+      !isHacked
+    ) {
       searchInput.value = "";
       hackTheSystem();
     }
