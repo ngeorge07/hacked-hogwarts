@@ -85,7 +85,7 @@ async function passFunction(students) {
         middle_name: "",
         last_name: "Cage",
         image: "https://www.placecage.com/114/108",
-        gender: "bad b  oy",
+        gender: "bad boy",
         house: "Hufflepuff",
         blood: "pure",
         squad: false,
