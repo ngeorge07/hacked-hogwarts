@@ -74,22 +74,24 @@
       <h1>Hogwarts Characters Database</h1>
 
       <div id="features">
-        <div id="searh-filter">
+        <div id="search-filter">
           <div>
             <label for="search">Search:</label>
             <input type="text" id="search" name="search" autocomplete="off" />
           </div>
 
-          <div>
-            <label for="filter">Filter:</label>
-            <select name="hogwarts-filter" id="filter" autocomplete="off">
-              <option value="all">No filter</option>
-              <option value="Gryffindor">Gryffindor</option>
-              <option value="Ravenclaw">Ravenclaw</option>
-              <option value="Hufflepuff">Hufflepuff</option>
-              <option value="Slytherin">Slytherin</option>
-            </select>
-          </div>
+          <select
+            name="hogwarts-filter"
+            id="filter"
+            class="ui-button"
+            autocomplete="off"
+          >
+            <option value="all">No filter</option>
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Ravenclaw">Ravenclaw</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+            <option value="Slytherin">Slytherin</option>
+          </select>
         </div>
 
         <div id="sort-options">
@@ -166,10 +168,12 @@
         </div>
       </div>
 
-      <button id="show-expelled" class="ui-button">
-        Show Expelled students
-      </button>
-      <button id="show-all" class="ui-button">Show all students</button>
+      <div id="show-buttons">
+        <button id="show-expelled" class="ui-button">
+          Show Expelled students
+        </button>
+        <button id="show-all" class="ui-button">Show all students</button>
+      </div>
     </header>
 
     <main>

@@ -12,7 +12,7 @@ let gryffindorPrefects = 0;
 let ravenclawPrefects = 0;
 let slytherinPrefects = 0;
 
-let hackCounter = 0;
+let isHacked = false;
 let g;
 let h;
 let r;
@@ -66,11 +66,18 @@ async function passFunction(students) {
 
   window.hackTheSystem = hackTheSystem;
 
+  document
+    .querySelector("#hack-button")
+    .addEventListener("click", hackTheSystem);
+
   function hackTheSystem() {
-    if (hackCounter === 0) {
-      document.querySelector("#hacking-system").style.display = "block";
+    if (!isHacked) {
       const audio = document.querySelector("audio");
       audio.play();
+      document.querySelector("#hacking-system").style.display = "block";
+
+      document.querySelector("#hack-button").style.transform =
+        "translateY(-120%)";
 
       const Me = {
         first_name: "Nicholas",
@@ -78,9 +85,9 @@ async function passFunction(students) {
         middle_name: "",
         last_name: "Cage",
         image: "https://www.placecage.com/114/108",
-        gender: "Boy",
+        gender: "bad b  oy",
         house: "Hufflepuff",
-        blood: "muggle",
+        blood: "pure",
         squad: false,
         prefect: false,
         status: false,
@@ -109,15 +116,10 @@ async function passFunction(students) {
             document.querySelector("#hacking-system").style.display = "none";
             audio.pause();
             audio.currentTime = 0;
-          }, 1500);
-        addLetter(e);
+          }, 1800);
+        setTimeout(typewriter, 100);
         e++;
       }
-
-      function addLetter(e) {
-        setTimeout(typewriter, 100);
-      }
-
       typewriter();
 
       randomizeBlood(allData);
@@ -132,7 +134,7 @@ async function passFunction(students) {
 
       showData(allData);
 
-      hackCounter++;
+      isHacked = true;
     } else return;
   }
 }
@@ -154,16 +156,20 @@ function studentCounter(students) {
 
 function randomizeBlood(data) {
   data.forEach((student) => {
-    if (student.initialPure) {
-      let randomBlood = Math.floor(Math.random() * 2);
-      if (randomBlood === 0) {
-        student.blood = "half";
-      } else student.blood = "muggle";
-    } else student.blood = "pure";
-
     if (student.me) {
       return;
     }
+
+    if (student.initialPure) {
+      let randomBlood = Math.floor(Math.random() * 3);
+      if (randomBlood === 0) {
+        student.blood = "half";
+      } else if (randomBlood === 1) {
+        student.blood = "muggle";
+      } else if (randomBlood === 2) {
+        student.blood = "pure";
+      }
+    } else student.blood = "pure";
   });
 }
 
@@ -196,6 +202,11 @@ function addSearch(data) {
   const searchInput = document.querySelector("#search");
 
   searchInput.addEventListener("input", () => {
+    if (searchInput.value === "hary" && !isHacked) {
+      searchInput.value = "";
+      hackTheSystem();
+    }
+
     searchCondition(searchInput, data);
   });
 }
@@ -284,7 +295,7 @@ function displayErrorModal(text) {
 function showData(students, isExpelled) {
   removeData();
 
-  if (hackCounter > 0) {
+  if (isHacked) {
     randomizeBlood(students);
   }
 
@@ -350,7 +361,7 @@ function showData(students, isExpelled) {
     });
 
     if (student.squad) {
-      if (hackCounter > 0) {
+      if (isHacked) {
         setTimeout(() => {
           removeInq(students);
         }, 3000);
