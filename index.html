@@ -59,7 +59,9 @@
               <p id="modal-blood">Blood: muggle</p>
               <p id="modal-status">Status: enrolled</p>
 
-              <button id="modal-expel">Expel</button>
+              <button id="modal-expel" class="expel-btn ui-button">
+                Expel
+              </button>
             </div>
           </div>
         </div>
@@ -67,6 +69,8 @@
     </template>
 
     <header>
+      <button id="hack-button" class="ui-button">Hack the system</button>
+
       <h1>Hogwarts Characters Database</h1>
 
       <div id="features">
@@ -162,11 +166,37 @@
         </div>
       </div>
 
-      <button id="show-expelled">Show Expelled students</button>
-      <button id="show-all">Show all students</button>
+      <button id="show-expelled" class="ui-button">
+        Show Expelled students
+      </button>
+      <button id="show-all" class="ui-button">Show all students</button>
     </header>
 
     <main>
+      <audio loop preload>
+        <source src="assets/audio/laughing-robot.wav" type="audio/wav" />
+        <source src="assets/audio/laughing-robot.mp3" type="audio/mp3" />
+        Your browser doesn't support this audio file.
+      </audio>
+      <div id="cant-expel">
+        <img
+          src="https://media2.giphy.com/media/10GhnQUXGAH1eM/giphy.gif?cid=ecf05e4797w1eoyzwjcllje54ypcnv6utrrri6ylc2ilhhi9&rid=giphy.gif&ct=g"
+          alt=""
+        />
+      </div>
+
+      <div id="hacking-system">
+        <img
+          src="https://media1.giphy.com/media/Kpir8ppU47CeY/giphy.gif?cid=790b76111be1f22d6e395db3d8e609d9b2da7c863118266c&rid=giphy.gif&ct=g"
+          alt=""
+        />
+
+        <h1 id="hack-text">
+          YOU ARE BEING HACKED BY SPACETIMER8032. MY HACKZ ARE ALL UP IN YOUR
+          SYSTEMZ
+        </h1>
+      </div>
+
       <div id="customModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">

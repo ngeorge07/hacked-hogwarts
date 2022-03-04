@@ -44,6 +44,7 @@ async function passFunction(students) {
   const showAllStudents = document.querySelector("#show-all");
   showAllStudents.addEventListener("click", () => {
     filterDropDown.value = "all";
+    addSortButtons(allData);
     showData(allData);
   });
 
@@ -67,12 +68,16 @@ async function passFunction(students) {
 
   function hackTheSystem() {
     if (hackCounter === 0) {
+      document.querySelector("#hacking-system").style.display = "block";
+      const audio = document.querySelector("audio");
+      audio.play();
+
       const Me = {
-        first_name: "George",
-        nick_name: "Gorgeous George",
+        first_name: "Nicholas",
+        nick_name: "Sexy Cat",
         middle_name: "",
-        last_name: "Nicolae",
-        image: "",
+        last_name: "Cage",
+        image: "https://www.placecage.com/114/108",
         gender: "Boy",
         house: "Hufflepuff",
         blood: "muggle",
@@ -82,6 +87,38 @@ async function passFunction(students) {
         expelled: false,
         me: true,
       };
+
+      let text = document.querySelector("#hack-text").innerText;
+      let origin = document.querySelector("#hack-text");
+
+      origin.innerHTML = "";
+
+      const textArray = [];
+
+      for (let i = 0; i < text.length; i++) {
+        textArray.push(text.charAt(i));
+      }
+
+      let e = 0;
+
+      function typewriter() {
+        if (e < textArray.length) {
+          origin.innerHTML += textArray[e];
+        } else
+          setTimeout(() => {
+            document.querySelector("#hacking-system").style.display = "none";
+            audio.pause();
+            audio.currentTime = 0;
+          }, 1500);
+        addLetter(e);
+        e++;
+      }
+
+      function addLetter(e) {
+        setTimeout(typewriter, 100);
+      }
+
+      typewriter();
 
       randomizeBlood(allData);
 
@@ -190,9 +227,12 @@ function addSortButtons(data) {
 }
 
 function sort(sortBy, data, direction) {
-  data = data.sort(sortByProperty);
+  // data = data.sort(sortByProperty);
 
   function sortByProperty(a, b) {
+    if (b[sortBy] === null) {
+      b[sortBy] = "zzz";
+    }
     if (a[sortBy] < b[sortBy]) {
       return -1 * direction;
     }
@@ -202,7 +242,7 @@ function sort(sortBy, data, direction) {
     return 0;
   }
 
-  showData(data);
+  showData(data.sort(sortByProperty));
 }
 
 function removeInq(data) {
@@ -278,16 +318,21 @@ function showData(students, isExpelled) {
     const studentBlood = studentClone.querySelector(".card-blood");
 
     if (student.status && !isExpelled) {
-      students.splice(students.indexOf(student), 1);
+      studentCard.remove;
       return;
     }
 
-    studentFullName.textContent = `${student.first_name} ${student.last_name}`;
+    if (!student.last_name || student.last_name === "zzz") {
+      studentFullName.textContent = `${student.first_name}`;
+    } else
+      studentFullName.textContent = `${student.first_name} ${student.last_name}`;
     studentGender.textContent = `Gender: ${student.gender}`;
     studentBlood.textContent = `Blood status: ${student.blood}`;
 
     if (student.image) {
       studentImage.src = student.image;
+    } else {
+      studentImage.src = "http://placekitten.com/108/114";
     }
 
     studentClone.querySelector(".inq").addEventListener("click", () => {
@@ -363,8 +408,12 @@ function showData(students, isExpelled) {
     if (expelledStudents.includes(student)) {
       studentClone.querySelector(".inq").remove();
       studentClone.querySelector(".prefect").remove();
+
+      student.prefect = false;
+      student.squad = false;
     }
 
+    btn.classList.add("ui-button");
     btn.addEventListener("click", () => {
       const popTemp = document.querySelector("#pop").content;
       const popClone = popTemp.cloneNode(true);
@@ -441,7 +490,9 @@ function showData(students, isExpelled) {
 
       // modalHouse.textContent = `House: ${student.house}`;
       modalBlood.textContent = `Blood: ${student.blood}`;
-      modalImg.src = student.image;
+      if (student.image) {
+        modalImg.src = student.image;
+      } else modalImg.src = "http://placekitten.com/108/114";
 
       if (student.squad) {
         modalInq.textContent = "Inquisitorial squad: Yes";
@@ -455,7 +506,10 @@ function showData(students, isExpelled) {
 
       function expelStudent() {
         if (student.me) {
-          window.alert("Can't expel me");
+          document.querySelector("#cant-expel").style.display = "grid";
+          setTimeout(() => {
+            document.querySelector("#cant-expel").style.display = "none";
+          }, 6500);
           return;
         }
 
@@ -465,15 +519,27 @@ function showData(students, isExpelled) {
 
         if (student.house === "Gryffindor") {
           g--;
+          gryffindorPrefects--;
         } else if (student.house === "Ravenclaw") {
           r--;
+          ravenclawPrefects--;
         } else if (student.house === "Hufflepuff") {
           h--;
-        } else s--;
+          hufflepuffPrefects--;
+        } else {
+          s--;
+          slytherinPrefects--;
+        }
 
+        students.splice(students.indexOf(student), 1);
         expelledStudents.push(student);
 
-        showData(students);
+        studentCard.classList.add("fade-out");
+        modal.remove();
+
+        setTimeout(() => {
+          showData(students);
+        }, 500);
       }
 
       showExpelled.addEventListener("click", () => {
@@ -503,7 +569,7 @@ function checkNames(first, middle, last, nick) {
   let nickName;
 
   if (!middle) {
-    if (!last) {
+    if (!last || last === "zzz") {
       fullName = first;
       lastName = "N/A";
     } else {
