@@ -460,6 +460,7 @@ header img {
           justify-content: center;
   background-color: #524d4d;
   color: white;
+  border-radius: 0 0 11px 11px;
 }
 
 #detailed-info #modal-images {
