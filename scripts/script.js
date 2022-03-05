@@ -13,6 +13,7 @@ let ravenclawPrefects = 0;
 let slytherinPrefects = 0;
 
 let isHacked = false;
+let inqRemoved = false;
 let g;
 let h;
 let r;
@@ -247,6 +248,11 @@ function sort(sortBy, data, direction) {
     if (b[sortBy] === null) {
       b[sortBy] = "zzz";
     }
+
+    if (a[sortBy] === null) {
+      a[sortBy] = "zzz";
+    }
+
     if (a[sortBy] < b[sortBy]) {
       return -1 * direction;
     }
@@ -265,6 +271,16 @@ function removeInq(data) {
       student.squad = false;
     }
   });
+
+  if (inqRemoved) {
+    document.querySelector("#cant-squad").style.display = "grid";
+    displayErrorModal("No more inquisitorial squad! Cool. Cool, cool, cool.");
+    setTimeout(() => {
+      document.querySelector("#cant-squad").style.display = "none";
+      document.querySelector("#customModal").style.display = "none";
+    }, 3500);
+  }
+  inqRemoved = true;
 
   showData(data);
 }
@@ -533,16 +549,24 @@ function showData(students, isExpelled) {
 
         if (student.house === "Gryffindor") {
           g--;
-          gryffindorPrefects--;
+          if (gryffindorPrefects > 0) {
+            gryffindorPrefects--;
+          }
         } else if (student.house === "Ravenclaw") {
           r--;
-          ravenclawPrefects--;
+          if (ravenclawPrefects > 0) {
+            ravenclawPrefects--;
+          }
         } else if (student.house === "Hufflepuff") {
           h--;
-          hufflepuffPrefects--;
+          if (hufflepuffPrefects > 0) {
+            hufflepuffPrefects--;
+          }
         } else {
           s--;
-          slytherinPrefects--;
+          if (slytherinPrefects > 0) {
+            slytherinPrefects--;
+          }
         }
 
         students.splice(students.indexOf(student), 1);

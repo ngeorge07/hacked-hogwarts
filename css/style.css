@@ -82,7 +82,8 @@ header img {
   background-color: #c53030;
 }
 
-#cant-expel {
+#cant-expel,
+#cant-squad {
   display: none;
   min-height: 100%;
   -o-object-fit: cover;
@@ -97,7 +98,8 @@ header img {
   z-index: 2;
 }
 
-#cant-expel img {
+#cant-expel img,
+#cant-squad img {
   width: 50%;
   -o-object-fit: contain;
      object-fit: contain;
@@ -495,13 +497,15 @@ header img {
   .modal-content {
     max-width: 65%;
   }
-  #cant-expel img {
+  #cant-expel img,
+  #cant-squad img {
     width: 70%;
   }
 }
 
 @media screen and (max-width: 995px) {
-  #cant-expel img {
+  #cant-expel img,
+  #cant-squad img {
     width: 80%;
   }
   #features {
@@ -531,7 +535,8 @@ header img {
 }
 
 @media screen and (max-width: 650px) {
-  #cant-expel img {
+  #cant-expel img,
+  #cant-squad img {
     width: 100%;
   }
   header h1 {

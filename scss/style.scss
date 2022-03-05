@@ -87,7 +87,8 @@ header {
   background-color: #c53030;
 }
 
-#cant-expel {
+#cant-expel,
+#cant-squad {
   display: none;
 
   min-height: 100%;
@@ -415,7 +416,8 @@ header {
     max-width: 65%;
   }
 
-  #cant-expel {
+  #cant-expel,
+  #cant-squad {
     img {
       width: 70%;
     }
@@ -423,7 +425,8 @@ header {
 }
 
 @media screen and (max-width: 995px) {
-  #cant-expel {
+  #cant-expel,
+  #cant-squad {
     img {
       width: 80%;
     }
@@ -451,7 +454,8 @@ header {
 }
 
 @media screen and (max-width: 650px) {
-  #cant-expel {
+  #cant-expel,
+  #cant-squad {
     img {
       width: 100%;
     }
