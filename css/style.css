@@ -118,6 +118,10 @@ header img {
       align-self: center;
 }
 
+#cant-expel {
+  top: 0;
+}
+
 #hacking-system {
   display: none;
   justify-items: center;
