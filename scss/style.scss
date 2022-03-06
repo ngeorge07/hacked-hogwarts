@@ -196,7 +196,7 @@ header {
 
 #student-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   max-width: 90%;
   margin: auto;
 }
@@ -212,6 +212,7 @@ header {
   justify-content: space-around;
   background-color: #524d4d;
   color: white;
+  max-width: 290px;
 
   h2 {
     align-self: center;
@@ -462,6 +463,10 @@ header {
 }
 
 @media screen and (max-width: 650px) {
+  #student-container {
+    max-width: 70%;
+  }
+
   #cant-expel,
   #cant-squad {
     img {
@@ -507,6 +512,10 @@ header {
 }
 
 @media screen and (max-width: 520px) {
+  #student-container {
+    justify-content: center;
+  }
+
   #hacking-system {
     h1 {
       font-size: 1.2rem;

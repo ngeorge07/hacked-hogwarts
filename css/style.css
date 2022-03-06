@@ -230,8 +230,8 @@ header img {
 #student-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(275px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  -ms-grid-columns: (minmax(285px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
   max-width: 90%;
   margin: auto;
 }
@@ -253,6 +253,7 @@ header img {
       justify-content: space-around;
   background-color: #524d4d;
   color: white;
+  max-width: 290px;
 }
 
 .student-card h2 {
@@ -544,6 +545,9 @@ header img {
 }
 
 @media screen and (max-width: 650px) {
+  #student-container {
+    max-width: 70%;
+  }
   #cant-expel img,
   #cant-squad img {
     width: 100%;
@@ -590,6 +594,11 @@ header img {
 }
 
 @media screen and (max-width: 520px) {
+  #student-container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
   #hacking-system h1 {
     font-size: 1.2rem;
   }
