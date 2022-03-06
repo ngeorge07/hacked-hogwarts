@@ -13,7 +13,9 @@ let ravenclawPrefects = 0;
 let slytherinPrefects = 0;
 
 let isHacked = false;
-let inqRemoved = false;
+
+let allData;
+
 let g;
 let h;
 let r;
@@ -27,9 +29,11 @@ const displayHufflepuffCounter = document.querySelector("#hufflepuff-counter");
 const displayRavenclawCounter = document.querySelector("#ravenclaw-counter");
 const displaySlytherinCounter = document.querySelector("#slytherin-counter");
 
+const filterDropDown = document.querySelector("#filter");
+
 async function passFunction(students) {
   let hackTrigger = 0;
-  const allData = await fetchData(students);
+  allData = await fetchData(students);
 
   document.querySelector("#secret-trigger").addEventListener("click", () => {
     hackTrigger++;
@@ -58,12 +62,10 @@ async function passFunction(students) {
     showData(allData);
   });
 
-  const filterDropDown = document.querySelector("#filter");
   filterDropDown.addEventListener("change", () => {
     const selectedFilter = filterDropDown.value;
 
     if (filterDropDown.value === "all") {
-      removeData();
       showData(allData);
       addSortButtons(allData);
       addSearch(allData);
@@ -550,9 +552,7 @@ function showData(students, isExpelled) {
           return;
         }
 
-        if (student.status) {
-          student.status = false;
-        } else student.status = true;
+        student.status = true;
 
         if (student.house === "Gryffindor") {
           g--;
@@ -576,7 +576,13 @@ function showData(students, isExpelled) {
           }
         }
 
-        students.splice(students.indexOf(student), 1);
+        if (filterDropDown.value === "all") {
+          students.splice(students.indexOf(student), 1);
+        } else {
+          allData.splice(allData.indexOf(student), 1);
+          students.splice(students.indexOf(student), 1);
+        }
+
         expelledStudents.push(student);
         if (expelledStudents.length > 0) {
           showExpelled.classList.remove("show-expel-hidden");
@@ -607,6 +613,7 @@ function showData(students, isExpelled) {
 
     document.querySelector("#student-container").appendChild(studentClone);
   });
+
   displayedStudentsCounter.textContent = `Displayed students: ${students.length}`;
 }
 
