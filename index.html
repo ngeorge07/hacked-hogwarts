@@ -65,7 +65,7 @@
     </template>
 
     <header>
-      <button id="hack-button" class="ui-button">Hack the system</button>
+      <button class="hack-button ui-button">Hack the system</button>
 
       <h1>Hogwarts Characters Database</h1>
 
@@ -157,7 +157,7 @@
             <img src="assets/house-crests/ravenclaw.png" alt="" />
             <span id="ravenclaw-counter"></span>
           </div>
-          <div>
+          <div id="secret-trigger">
             <img src="assets/house-crests/slytherin.png" alt="" />
             <span id="slytherin-counter"></span>
           </div>
@@ -165,7 +165,7 @@
       </div>
 
       <div id="show-buttons">
-        <button id="show-expelled" class="ui-button">
+        <button id="show-expelled" class="ui-button show-expel-hidden">
           Show Expelled students
         </button>
         <button id="show-all" class="ui-button">Show all students</button>

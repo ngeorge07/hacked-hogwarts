@@ -49,6 +49,10 @@ header {
   background-color: #285e61;
 }
 
+.show-expel-hidden {
+  display: none;
+}
+
 // #sorting th.sortby[data-sort-direction="asc"]::after {
 //   content: "⇓";
 // }
@@ -72,7 +76,7 @@ header {
   font-size: 1.5rem;
 }
 
-#hack-button {
+.hack-button {
   position: absolute;
   background-color: #c53030;
   font-size: 1rem;
@@ -82,9 +86,12 @@ header {
   transition: transform 325ms ease-in;
 }
 
-#hack-button:focus {
+.hack-visible {
   transform: translateY(0);
-  background-color: #c53030;
+}
+
+.hack-button:focus {
+  transform: translateY(0);
 }
 
 #cant-expel,
@@ -99,7 +106,7 @@ header {
 
   /* Set up positioning */
   position: fixed;
-  top: 0;
+  top: 7rem;
   left: 0;
   z-index: 2;
 
@@ -460,6 +467,10 @@ header {
     img {
       width: 100%;
     }
+  }
+
+  #cant-squad {
+    top: 0;
   }
 
   header {

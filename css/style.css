@@ -52,6 +52,10 @@ header img {
   background-color: #285e61;
 }
 
+.show-expel-hidden {
+  display: none;
+}
+
 .view-det {
   font-size: 1rem;
   background-color: #2c7a7b;
@@ -62,7 +66,7 @@ header img {
   font-size: 1.5rem;
 }
 
-#hack-button {
+.hack-button {
   position: absolute;
   background-color: #c53030;
   font-size: 1rem;
@@ -76,10 +80,14 @@ header img {
   transition: transform 325ms ease-in, -webkit-transform 325ms ease-in;
 }
 
-#hack-button:focus {
+.hack-visible {
   -webkit-transform: translateY(0);
           transform: translateY(0);
-  background-color: #c53030;
+}
+
+.hack-button:focus {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 #cant-expel,
@@ -93,7 +101,7 @@ header img {
   height: auto;
   /* Set up positioning */
   position: fixed;
-  top: 0;
+  top: 7rem;
   left: 0;
   z-index: 2;
 }
@@ -539,6 +547,9 @@ header img {
   #cant-expel img,
   #cant-squad img {
     width: 100%;
+  }
+  #cant-squad {
+    top: 0;
   }
   header h1 {
     font-size: 1.6rem;

@@ -28,7 +28,16 @@ const displayRavenclawCounter = document.querySelector("#ravenclaw-counter");
 const displaySlytherinCounter = document.querySelector("#slytherin-counter");
 
 async function passFunction(students) {
+  let hackTrigger = 0;
   const allData = await fetchData(students);
+
+  document.querySelector("#secret-trigger").addEventListener("click", () => {
+    hackTrigger++;
+
+    if (hackTrigger === 3) {
+      document.querySelector(".hack-button").classList.add("hack-visible");
+    }
+  });
 
   totalNumberStudents = students.length;
   g = studentCounter(allData).Gryffindor;
@@ -68,7 +77,7 @@ async function passFunction(students) {
   window.hackTheSystem = hackTheSystem;
 
   document
-    .querySelector("#hack-button")
+    .querySelector(".hack-button")
     .addEventListener("click", hackTheSystem);
 
   function hackTheSystem() {
@@ -77,8 +86,7 @@ async function passFunction(students) {
       audio.play();
       document.querySelector("#hacking-system").style.display = "block";
 
-      document.querySelector("#hack-button").style.transform =
-        "translateY(-120%)";
+      document.querySelector(".hack-button").classList.remove("hack-visible");
 
       const Me = {
         first_name: "Nicholas",
@@ -112,22 +120,23 @@ async function passFunction(students) {
       function typewriter() {
         if (e < textArray.length) {
           origin.innerHTML += textArray[e];
-        } else
+          setTimeout(typewriter, 100);
+          e++;
+        } else {
           setTimeout(() => {
             document.querySelector("#hacking-system").style.display = "none";
             audio.pause();
             audio.currentTime = 0;
+            removeInq(allData);
           }, 1800);
-        setTimeout(typewriter, 100);
-        e++;
+        }
       }
       typewriter();
 
       randomizeBlood(allData);
 
-      setTimeout(() => {
-        removeInq(allData);
-      }, 3000);
+      // setTimeout(() => {
+      // }, 4800);
 
       allData.unshift(Me);
       totalNumberStudents++;
@@ -208,7 +217,8 @@ function addSearch(data) {
       !isHacked
     ) {
       searchInput.value = "";
-      hackTheSystem();
+      // hackTheSystem();
+      document.querySelector(".hack-button").classList.add("hack-visible");
     }
 
     searchCondition(searchInput, data);
@@ -272,15 +282,12 @@ function removeInq(data) {
     }
   });
 
-  if (inqRemoved) {
-    document.querySelector("#cant-squad").style.display = "grid";
-    displayErrorModal("No more inquisitorial squad! Cool. Cool, cool, cool.");
-    setTimeout(() => {
-      document.querySelector("#cant-squad").style.display = "none";
-      document.querySelector("#customModal").style.display = "none";
-    }, 3500);
-  }
-  inqRemoved = true;
+  document.querySelector("#cant-squad").style.display = "grid";
+  displayErrorModal("No more inquisitorial squad! Cool. Cool, cool, cool.");
+  setTimeout(() => {
+    document.querySelector("#cant-squad").style.display = "none";
+    document.querySelector("#customModal").style.display = "none";
+  }, 3500);
 
   showData(data);
 }
@@ -571,6 +578,9 @@ function showData(students, isExpelled) {
 
         students.splice(students.indexOf(student), 1);
         expelledStudents.push(student);
+        if (expelledStudents.length > 0) {
+          showExpelled.classList.remove("show-expel-hidden");
+        }
 
         studentCard.classList.add("fade-out");
         modal.remove();
